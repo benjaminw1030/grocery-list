@@ -1,11 +1,20 @@
 $(document).ready(function () {
   $("#groceryList").submit(function (event) {
     event.preventDefault();
+    $("#groceryList").toggle();
+    $("#list").toggle();
 
-    let groceryArray = []
+    let groceryArray = [];
     groceryArray.push($("#groceryItem1").val(), $("#groceryItem2").val(), $("#groceryItem3").val(), $("#groceryItem4").val(), $("#groceryItem5").val());
+    let groceryCaps = [];
+    groceryArray.forEach(function (element) {
+      groceryCaps.push(element.toUpperCase());
+    });
+    groceryCaps.sort();
 
-    console.log(groceryArray);
+    groceryCaps.forEach(function (element) {
+      $("ul#finalList").append("<li>" + element + "</li>");
+    });
     // const person1Input = $("input#person1").val();
     // const person2Input = $("input#person2").val();
     // const animalInput = $("input#animal").val();
@@ -34,6 +43,5 @@ $(document).ready(function () {
     // $(".verb").text(allCaps[4]);
     // $(".noun").text(allCaps[5]);
 
-    $("#story").show();
   });
 });
